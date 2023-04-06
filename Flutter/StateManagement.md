@@ -8,13 +8,13 @@ flutter pub add provider
 
 Now the biggest question is where you want to manage the state. Consider you have an application where it has 3 screens(or 3 widgets). HomeScreen, List items and Cart items.
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230428017-434e57d5-8263-4545-b733-1e6cd32b2717.png)
 
 Now, your ListItems screen and CartItem screen both uses the list of items and if you click on add to cart in ListItemScreen that should add an Item in the cart and that should reflect in CartPage. So you need to take the state up of the tree so that CartItem page can use up that state.
 
 So you need to be creating the state at HomePage level.
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230428064-c5e5f5a6-deb4-4470-8d06-d3291c549aff.png)
 
 For creating the state, first create a model. Here I created a model named HomePageModel.
 
