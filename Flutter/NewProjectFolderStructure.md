@@ -12,7 +12,7 @@ Now the application is created with the given name in the specified path. A basi
 
 The default folder structure will be something like below.
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230427826-8621473a-756f-4f42-9605-d2b1f405e2d3.png)
 
 In lib folder there will be main.dart file. This is the place where our application code starts.
 
