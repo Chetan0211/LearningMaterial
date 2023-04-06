@@ -15,9 +15,9 @@ Third layer is Rendering, this is where the UI and state management get’s rend
 
 Then, the layers go down to Gestures, foundation library, engine, and finally, core platform-specific code.
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230426428-4c2f4419-a4c2-4307-b3a0-d2101f4a86f3.png)
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230426558-e952f6f0-661f-4a82-9597-c517a1fb3d71.png)
 
 ### Widgets:
 
@@ -31,7 +31,7 @@ Consider MyHomePage as a particular page.
 
 Scaffold is one of the widgets that has visible component. It has 2 major properties namely AppBar and Body. AppBar consists of Heading. And in Body we can have all the component widgets(Child widgets).
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230426610-2eaddc9b-d63d-447c-9ead-8269fc59a83a.png)
 
 ### **Gestures:**
 
