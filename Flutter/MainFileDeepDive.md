@@ -32,6 +32,6 @@ The first line is importing flutter’s material files which help in using flutt
 
 MyApp is using StatelessWidget. So, we are overriding the build method which returns a `MaterialApp()`**which is like a starting point for UI**. Inside that, we will be specifying what has to be shown on the home screen. For now, we just printed the text. It will be looking something like below.
 
-image.png
+![image](https://user-images.githubusercontent.com/52970245/230427119-b121bc72-1b68-449b-a665-406791c3263e.png)
 
 NOTE: We can do lot more in MaterialApp(). For example, we can specify the theme of the app here, we can specify the routes here using onRouteGenerator method. These are few of the examples.
