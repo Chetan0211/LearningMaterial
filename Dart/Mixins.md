@@ -83,3 +83,36 @@ class AnotherChild with Parent1{
 ```
 
 Correct way to do it:
+
+```dart
+void main() {
+  var c = new SubChild();
+  c.mainAction();
+}
+
+mixin Parent1 on Child{
+  void Action1(){
+    print("This is action 1");
+  }
+}
+
+mixin Parent2{
+  void Action2(){
+    print("This ia action 2");
+  }
+}
+
+class Child with Parent2{
+  void ChildAction(){
+    Action2();
+  }
+}
+
+//It extends Child so it can use Parent1
+class SubChild extends Child with Parent1{
+  void mainAction(){
+    Action1();
+    ChildAction();
+  }
+}
+```
