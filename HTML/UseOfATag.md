@@ -1,6 +1,6 @@
-# Use of <a> Tag
+# Use of `<a>` Tag
 
-<a> Tag is known as an anchor tag. This is used to specify the hyperlinks. 
+`<a>` Tag is known as an anchor tag. This is used to specify the hyperlinks. 
 
 **Example:**
 
@@ -10,9 +10,10 @@
 
 **Output:**
 
-![Screenshot 2022-12-29 at 12.20.03 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/375505da-5506-4a2b-a6e4-f1276ad1924f/Screenshot_2022-12-29_at_12.20.03_AM.png)
+  ![image](https://user-images.githubusercontent.com/52970245/230410259-8406471a-d68f-43fc-b920-ddef96c58177.png)
+
 
 So, when we click on “Click me!!” it will be navigated to the google home page in a new tab.
 
-There are so many attributes in <a> tag.
+There are so many attributes in `<a>` tag.
 For more look into: [a tag](https://www.w3schools.com/tags/tag_a.asp)
