@@ -26,3 +26,26 @@ Here we can access request and response values inside that function. To movie th
 (**NOTE**: If you don't mention any ROUTE, then that middleware will run for all APIs)
 
 You can also use middleware for GET, POST, PUT, DELETE, etc.
+
+
+# Chain Middleware
+
+we can chain the middleware and do some actions over there.
+
+For Example:
+```JS
+app.get('/api/temp', (req,res,next)=>{
+  req.time = new Date().toUTCString();
+  next();
+}, (req,res)=>{
+  res.status(200).json({
+      message: "working",
+      time: req.time
+  });
+});
+```
+
+As you see for a GET request we used `(req,res,next)=>{}` first and followed by `(req, res)=>{}`.
+So in middleware we get the time add added it in request object by creating a variable named time, and we accessed in the final Object`(req,res)=>{}`.
+
+In the same way we can create as many middlewares we need.
