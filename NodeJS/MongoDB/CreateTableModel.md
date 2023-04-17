@@ -35,3 +35,6 @@ exports.userModel = UserModel;
 As you see, in Schema we need to mention the column name and type it holds. As you see in example is a column has multiple parameters to set, then we use object where we specify all the parameters. For example some of the parameters are: if the column has unique values, is that column required, we can also specify the validations to it.
 
 Once the Schema is done, we need to create a model using that schema with the table name.
+
+
+For more refer:[Mongoose schema types](https://mongoosejs.com/docs/schematypes.html)
