@@ -1,0 +1,1 @@
+# Auto sizing the font according to screen size.
