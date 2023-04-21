@@ -25,3 +25,5 @@ Widget build(BuildContext context){
 ```
 
 So, when you press the button you will get the size of scaffold that is occupied.
+
+You can get the size once the widget build is completed. You can't get it while it's been building and will through you an error saying you can't access while building.
