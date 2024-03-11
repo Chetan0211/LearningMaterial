@@ -9,6 +9,7 @@ You need to add EntityFramework package and Npgsql for EF package<br/>
 <b><i>Microsoft.EntityFrameworkCore</i></b><br/>
 <b><i>Microsoft.EntityFrameworkCore.Design</i></b><br/>
 <b><i>Npgsql.EntityFrameworkCore.PostgreSQL</i></b><br/>
+
 <b>NOTE:</b> Check the version while you download. It needs to match with .net version <br/>
 Once these are installed you are good to go with typing the code.
 
@@ -105,6 +106,34 @@ Now in <b>Program.cs</b> file we need to add Database detials to connect to DB.
 ```
 builder.Services.AddDbContext<EFDBContext>(options => options.UseNpgsql("YOUR_DB_CREDENTIALS"));
 ```
+
+### Add changes in DB
+To reflect the changes done in EF table in real DB we need to create the migration file from the code and we need to execute that code so that it will get reflected in the database. 
+
+To generate the migration file we will be executing the following code in terminal. This code must be executed inside the project folder.
+```
+dotnet ef migrations add "DESCRIPTION"
+```
+Once this is executed successfully, build file is automatically generated.
+
+We can use the below code in terminal to run these migration files to change the DB
+```
+dotnet ef database update
+```
+To run the above code successfully you need to have the below code placed under the <b>EFDBContext</b> class.
+```
+public class BloggingContextFactory : IDesignTimeDbContextFactory<EFDBContext>
+    {
+        public EFDBContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<EFDBContext>();
+            optionsBuilder.UseNpgsql("YOUR_DB_CREDENTIALS");
+
+            return new EFDBContext(optionsBuilder.Options);
+        }
+    }
+```
+This will help in getting the info on which DB it needs to access and change the tables.
 
 ## Other things to look out in EF
 ### How to auto generate the values
