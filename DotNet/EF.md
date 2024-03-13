@@ -150,7 +150,56 @@ public class AdminDetails
 
 Now in my code adminId details are auto generated.
 ### How to make primary key and foreign key relations in table
-(Yet to complete this part)
+
+To make the foreign key relation in the table you have to link both the tables.
+EF makes a property as foreign key property when its name matches with the primary key property of a related entity.
+
+Let's take an example. I have two tables Admin and Institution. I need to make institution as a foreign key to admin table. For this I need to add following code.
+
+This is how my Institution class looks like
+```
+[Table("institution_details", Schema = "main")]
+	public class InstitutionDetails
+	{
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // This is used to auto generate unique id
+        public long institutionId { get; set; }
+        public string institutionName { get; set; }
+        [Required]
+        public string institutionEndingMail { get; set; }
+        public string physicalAddress { get; set; }
+        public string phoneNumber { get; set; }
+        public string countryCode { get; set; }
+
+        public ICollection<AdminDetails> Admins { get; set; } // We need to add the collection of AdminDetails as it is the one that has InstitutionId as foreign key
+    }
+```
+
+This is how my AdminDetails class looks like
+```
+[Table("admin_details", Schema = "main")]
+	public class AdminDetails
+	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)] // This is used to auto generate unique id
+		public long adminId { get; set; }
+		public string firstName { get; set; }
+		public string lastName { get; set; }
+		[Required]
+		public string email { get; set; }
+		public string password { get; set; }
+		public DateTime createdAt { get; set; }
+		public DateTime updatedAt { get; set; }
+
+		//Foreign Key
+		[ForeignKey("institutionId")]
+        public long institutionId { get; set; }
+		public InstitutionDetails Institution { get; set; }
+    }
+```
+
+Once you add all those requeired one you are good to go.
+
 
 <a id="links">### Learning Links</a>
 
