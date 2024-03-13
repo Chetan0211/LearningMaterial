@@ -15,7 +15,7 @@ Once these are installed you are good to go with typing the code.
 
 ### Create EFDBContext class and Extend DBContext
 We need to create a class named EFDBContext and inherit DBContext to it.
-```
+```c#
 public class EFDBContext : DbContext
 	{
 		public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
@@ -28,7 +28,7 @@ public class EFDBContext : DbContext
 ### Create tables
 We need to create the tables using the class.
 Let's take an example. Let's create admin table
-```
+```c#
 [Table("admin_details", Schema = "main")]
 	public class AdminTable
 	{
@@ -45,7 +45,7 @@ Let's take an example. Let's create admin table
 
 After creating the AdminTable class, we need to create DBSet for that class in EFDBContext.
 
-```
+```c#
 public class EFDBContext : DbContext
 	{
 		public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
@@ -67,7 +67,7 @@ Best way to perform these operations is to keep each operation in a method and k
 Now let's see how to create it.
 
 First we need to create an interface class and write all the functions it needs to perform.
-```
+```c#
 public interface IAdminProcedure
 	{
 		int AddAdmin(string firstName, string lastName, string email, string password);
@@ -75,7 +75,7 @@ public interface IAdminProcedure
 ```
 After that create a class and inherit the interface and implement the methods. But here in constructor you can get the EFDBContect from Dependency injection. Get that and save it in a variable.
 
-```
+```c#
 public class AdminProcedure : IAdminProcedure
 	{
 		EFDBContext _context;
@@ -91,7 +91,7 @@ public class AdminProcedure : IAdminProcedure
     }
 ```
 So as you can see using the <b>_context</b> you can actually get the tables and perform CRUD on them. To save the modified data into database you need to use
-```
+```c#
 _context.SaveChanges() // This method is used to save the data from DBSet to Database
 ```
 
@@ -103,25 +103,25 @@ builder.Services.AddTransient<IAdminProcedure, AdminProcedure>();
 
 ### Link to DB
 Now in <b>Program.cs</b> file we need to add Database detials to connect to DB.
-```
+```c#
 builder.Services.AddDbContext<EFDBContext>(options => options.UseNpgsql("YOUR_DB_CREDENTIALS"));
 ```
 
 ### Add changes in DB
-To reflect the changes done in EF table in real DB we need to create the migration file from the code and we need to execute that code so that it will get reflected in the database. 
+To reflect the changes done in EF table in real DB we need to create the migration file from the code and we need to execute that code so that it will get reflected in the database.
 
 To generate the migration file we will be executing the following code in terminal. This code must be executed inside the project folder.
-```
+```sh
 dotnet ef migrations add "DESCRIPTION"
 ```
 Once this is executed successfully, build file is automatically generated.
 
 We can use the below code in terminal to run these migration files to change the DB
-```
+``` sh
 dotnet ef database update
 ```
 To run the above code successfully you need to have the below code placed under the <b>EFDBContext</b> class.
-```
+```c#
 public class BloggingContextFactory : IDesignTimeDbContextFactory<EFDBContext>
     {
         public EFDBContext CreateDbContext(string[] args)
@@ -139,7 +139,7 @@ This will help in getting the info on which DB it needs to access and change the
 ### How to auto generate the values
 To auto generate the values in database (like incrementing the integer when you add a new row in the table), you need to use <b>DatabaseGenerated()</b> method in data anotations.
 
-```
+```c#
 public class AdminDetails
 	{
 		[Key]
@@ -157,7 +157,7 @@ EF makes a property as foreign key property when its name matches with the prima
 Let's take an example. I have two tables Admin and Institution. I need to make institution as a foreign key to admin table. For this I need to add following code.
 
 This is how my Institution class looks like
-```
+```c#
 [Table("institution_details", Schema = "main")]
 	public class InstitutionDetails
 	{
@@ -176,7 +176,7 @@ This is how my Institution class looks like
 ```
 
 This is how my AdminDetails class looks like
-```
+```c#
 [Table("admin_details", Schema = "main")]
 	public class AdminDetails
 	{
