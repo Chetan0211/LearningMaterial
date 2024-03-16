@@ -70,4 +70,16 @@ app.Run();
 ```
 
 ## **3. OAuth Authentication**
-(TODO: Yet to complete)
+OAuth is an open-standard authorization protocol or framework that provides applications the ability for “secure designated access”.
+OAuth doesn’t share password data but instead uses authorization tokens to prove an identity between consumers and service providers. OAuth is an authentication protocol that allows you to approve one application interacting with another on your behalf without giving away your password.
+
+Consider an example you want to sign in into an application using gmail. Then when you click on that gmail don't give the application your password. Instead it will give a token where it can validate a user is legid. This way there won't be any breach of gmail password and also you can access the application using gmail credentials.
+
+Now let's look into how to integrate into your .NET project.
+
+First, we need to add the nuget package which is mentioned below
+```
+Microsoft.AspNetCore.Authentication.JwtBearer
+```
+Once we add the package we need to set up the middleware pipeline.
+(Yet to complete)
