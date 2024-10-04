@@ -71,6 +71,7 @@ To have custom values like having custom size for specific tags or having custom
 
 ```javascript
 //..
+theme: {
   extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -90,10 +91,6 @@ To have custom values like having custom size for specific tags or having custom
       width: {
         '100vh': '100vh' 
       },
-      // Custom tag size
-      fontSize: {
-        h1: '2em',
-      },
       // Custom colors
       colors: {
         'primary-color': {
@@ -111,5 +108,17 @@ To have custom values like having custom size for specific tags or having custom
         }
       }
     },
+},
+plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
+    // This is how you add custom size to tags
+    function({ addBase }) {
+      addBase({
+        'h1': { fontSize: '2em' },
+      });
+    },
+  ]
 //..
 ```
