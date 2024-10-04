@@ -82,4 +82,4 @@ First, we need to add the nuget package which is mentioned below
 Microsoft.AspNetCore.Authentication.JwtBearer
 ```
 Once we add the package we need to set up the middleware pipeline.
-(Yet to complete)
+(TODO: Yet to complete)
