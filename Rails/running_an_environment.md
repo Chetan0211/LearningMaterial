@@ -33,3 +33,5 @@ After this to run the application in terminal just run the command
 That's it, it will run all the commands you mentioned in Procfile.dev.
 
 Note: When you run the `./bin/dev` if you get something like permission denied then you just run `chmod +x ./bin/dev` so that you will be giving permissions. Then you can run the command again. This time it will run smoothly.
+
+Note: When you run using `./bin/dev` you cannot debug as this line will run multiple services. When you add debugger line in code you can interact in terminal but you need to use new terminal. And inside that type "rdbg -A"(This will work when you are using debug gem as a debugger.)
