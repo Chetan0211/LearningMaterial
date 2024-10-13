@@ -190,6 +190,18 @@ If you want to customize a particular module in the devise model, you can do tha
 
 You can even customize even controller of devise model.
 `rails generate devise:controllers users`
+
+So customization looks something like this:
+```ruby
+class Users::SessionsController < Devise::SessionsController
+  def create
+    super do |resource|
+      BackgroundWorker.trigger(resource)
+    end
+  end
+end
+```
+
 Remember, once you customize the controller that has to be specified in the routes.rb file.
 
 ```ruby
@@ -198,6 +210,21 @@ Rails.application.routes.draw do
   #.. code goes here
 end
 ```
+
+Now we have created the cutomised views and controllers for devise. But how additional data is being saved? You can't just leave adding the additional fields in the views hoping it will be saved. Because by default devise only knows variables like email and password while you perform registration. So when you have additional fields you need to do something called as parameter sanitization. IN here you are permitting the additional fields. Code looks something like this:
+```ruby
+class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_sign_up_params, only: [:create]
+  # .. routing methods goes here
+  protected
+
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :age, :gender])
+  end
+end
+```
+As you see in the code snippet above we are letting the devise code know that we have additional fields to consider and here it is basically username, age and gender.
 
 
 NOTE: For more information on devise checkout [Devise Official Codebase and README file](https://github.com/heartcombo/devise?tab=readme-ov-file)
