@@ -2,4 +2,10 @@
 
 - Pseudo-Variables
 - concat a string
--omni auth using devise
+
+# Rails
+
+- omni auth using devise
+- sidekiq
+- action mailer
+- cancancan
