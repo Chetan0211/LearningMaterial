@@ -6,6 +6,14 @@
 # Rails
 
 - omni auth using devise
-- sidekiq
-- action mailer
+- jobs
 - cancancan
+- payment
+- ActionCable
+- Hotwire(Turbo/stimulus)
+- ChangeUI without page reload
+- Trailblazer
+- Validations
+- plugins
+- stream videos
+- How chat streaming works
