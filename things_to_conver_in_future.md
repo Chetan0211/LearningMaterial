@@ -9,7 +9,6 @@
 - jobs
 - cancancan
 - payment
-- ActionCable
 - Hotwire(Turbo/stimulus)
 - ChangeUI without page reload
 - Trailblazer
