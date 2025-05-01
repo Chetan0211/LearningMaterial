@@ -11,5 +11,5 @@ That will return you id if it something is running in that port.
 Once you get that we can kill it using:
 
 ```bash
-> kill -QUIT <PID> (here <PID> is the number we got)
+> kill -QUIT <PID> (here <PID> is the number we got and QUIT is replaced with 9)
 ```
