@@ -176,3 +176,18 @@ sudo systemctl enable reverse-tunnel.service
 ```
 
 That's it, now you can access the remote server whereever you want.
+
+Connecting to cloud machine use ssh
+
+if you specify correct id_rsa key then you can direcly use `ssh {{IP_ADDRESS}}`
+
+When you need to use specific key for ssh then we need to do
+
+```bash
+~> ssh -i ./.ssh/id_rsa_server {{USER_NAME}}@{{IP_ADDRESS}}
+```
+
+This will kinda looks like
+`ssh -i ./.ssh/id_rsa_server ubuntu@129.154.46.176`
+
+While doing reverse ssh you need to just change the username and point to the remote server you are need to use(I mean change the username that isused for remote server).
