@@ -80,5 +80,33 @@ eksctl utils associate-iam-oidc-provider \
 
 For creating nodegroups you can get help on what are the things you can use while creating nodegroups by using
 ```bash
-eksctl craete nodegroup --help
+eksctl create nodegroup --help
+```
+
+```bash
+#To create nodegroup for a cluster
+eksctl create nodegroup --cluster=eksdemo \ # cluster name to which nodegroup has to be created
+                       --region=us-east-1 \ # Region where this nodegroup has to be created
+                       --name=eksdemo1-ng-public1 \ # Name for the nodegroup
+                       --node-type=t3.medium \ # Type of instance 
+                       --nodes=2 \
+                       --nodes-min=2 \
+                       --nodes-max=4 \
+                       --node-volume-size=20 \ # Each node has 20GB of size 
+                       --ssh-access \ # We are setting ssh access to true
+                       --ssh-public-key=kube-demo \ # we are saying to use kude-demo as ssh key which was created earlier in our EC2 key pair
+                       --managed \ # AWS is managed automatically like updating, patching etc.
+                       --asg-access \ # Auto scaling group access(reate IAM policy in worker IAM role)
+                       --external-dns-access \ # External DNS access(Route 53 DNS should be registered and tha trelated IAM policy is created)
+                       --full-ecr-access \ # Enable full access to ECR(Elastic Container Registry) IAM policy is created for this
+                       #sameway we are giving permissions to below once too
+                       --appmesh-access \
+                       --alb-ingress-access 
+```
+
+Now agin you can check the nodes created using `kubectl get nodes`
+
+To get a more info on node you can use
+```bash
+kubectl get nodes -o wide
 ```
