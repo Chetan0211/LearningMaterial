@@ -110,3 +110,13 @@ To get a more info on node you can use
 ```bash
 kubectl get nodes -o wide
 ```
+
+To remove the cluster we need to rollback all security group changes and EC2 instance roles changes.
+
+Then you can remove just wroerker nodes using 
+
+```bash
+eksctl delete nodegroup --cluster={{CLUSTER_NAME}} --name={{NODE_GROOUP_NAME}}
+```
+
+FYI you can get the node group names using `eksctl get nodegroup --cluster=<{{CLUSTER_NAME}}`
