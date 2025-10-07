@@ -191,3 +191,9 @@ This will kinda looks like
 `ssh -i ./.ssh/id_rsa_server ubuntu@129.154.46.176`
 
 While doing reverse ssh you need to just change the username and point to the remote server you are need to use(I mean change the username that isused for remote server).
+
+Edited(7th october 2025):
+If you want to access the remote server using reverse ssh you need to also mention port you need to access as by default it uses ssh port which is 22.
+
+Now the rever ssh system command looks like this:
+`ssh -p 54321 -i ./.ssh/id_rsa_server chetan@129.154.46.176`
