@@ -197,3 +197,14 @@ If you want to access the remote server using reverse ssh you need to also menti
 
 Now the rever ssh system command looks like this:
 `ssh -p 54321 -i ./.ssh/id_rsa_server chetan@129.154.46.176`
+
+### Updated Notes(10 May, 2026):
+
+You can connect to the remote server using above method, but the problem is it prompts for system password. To use private key to directly connect to the system then you can do the following setps.
+
+First you need to create the keys and get the public key (here consider i have stored public and private key in id_rsa_home_server and is_rsa_home_server.pub) and store the public key in `./.ssh/authorized_keys`. This will make sure that when you connect using the related private key then it will let you in without password.
+
+Once you have that key then you can use that private key to directly access server wihtout password.
+`ssh -p 54321 -i ./.ssh/id_rsa_home_server chetan@129.154.46.176`
+
+**Note**: As you are doing reverse ssh you need the keys for your remote server not for cloud server. 
